@@ -14,6 +14,19 @@ const App = () => {
   };
 
 
+  const handleButtonClick = (value) => {
+    if (value === 'C') {
+      setInput('');
+    } else if (value === '<') {
+      setInput(input.slice(0, -1));
+    } else if (value === '=') {
+      calculateResult(input);
+    } else {
+      setInput((prevValue) => prevValue + value);
+    }
+  };
+
+
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-green-400 to-blue-500">
       <h1 className="text-5xl text-center mb-4 bg-gradient-to-r from-gray-800 via-pink-500 to-gray-800 text-transparent bg-clip-text font-bold">Calculator</h1>
