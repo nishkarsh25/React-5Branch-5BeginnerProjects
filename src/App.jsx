@@ -4,6 +4,15 @@ import { useState } from 'react'
 const App = () => {
   const [input, setInput] = useState('');
 
+  const calculateResult = (input) => {
+    try {
+      const result = eval(input);
+      setInput(result.toString());
+    } catch (error) {
+      setInput('Error');
+    }
+  };
+
 
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-green-400 to-blue-500">
