@@ -45,6 +45,18 @@ const App = () => {
     setEditValue('');
   }
 
+  const handleAddKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      addTodo();
+    }
+  }
+
+  const handleUpdateKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      updateTodo();
+    }
+  }
+
   
 
   return (
