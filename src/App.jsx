@@ -1,16 +1,14 @@
-import Header from "./Components/Header"
-import Body from "./Components/Body"
-import Footer from "./Components/Footer"
+import React from 'react'
 
-function App() {
+const App = () => {
+  const [height, setHeight] = useState(180);
+  const [weight, setWeight] = useState(70);
+
   
-
   return (
-    <>
-      <Header/>
-      <Body/>
-      <Footer/>
-    </>
+    <div>
+      
+    </div>
   )
 }
 
