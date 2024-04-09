@@ -24,6 +24,12 @@ const App = () => {
     }
   };
 
+  const dateBuilder = (d) => {
+    const options = { weekday: "long", month: "long", day: "numeric" };
+    const date = d.toLocaleDateString("en-US", options);
+    return date;
+  };
+
   return (
     <div>
       
