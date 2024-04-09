@@ -31,6 +31,20 @@ const App = () => {
     setEditValue(text);
   }
 
+  const updateTodo = () => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === editId) {
+        return { ...todo, text: editValue };
+      }
+      return todo;
+    });
+
+    setTodos(updatedTodos);
+    setEditMode(false);
+    setEditId(null);
+    setEditValue('');
+  }
+
   
 
   return (
