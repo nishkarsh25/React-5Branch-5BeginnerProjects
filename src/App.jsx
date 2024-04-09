@@ -25,6 +25,12 @@ const App = () => {
     setTodos(updatedTodos);
   }
 
+  const enterEditMode = (id, text) => {
+    setEditMode(true);
+    setEditId(id);
+    setEditValue(text);
+  }
+
   
 
   return (
