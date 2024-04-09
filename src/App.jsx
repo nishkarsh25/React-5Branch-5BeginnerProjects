@@ -11,7 +11,12 @@ const App = () => {
   function onHeightChange(event) {
     setHeight(event.target.value);
   }
-  
+
+  const output = useMemo(() => {
+    const calculateHeight = height / 100;
+    return (weight / (calculateHeight * calculateHeight)).toFixed(1);
+  }, [weight, height]);
+
   
   return (
     <div>
