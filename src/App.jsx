@@ -8,7 +8,17 @@ const App = () => {
   const [editId, setEditId] = useState(null);
   const [editValue, setEditValue] = useState('');
 
-  
+  const addTodo = () => {
+    if (inputValue.trim() !== '') {
+      const newTodo = {
+        id: new Date().getTime(),
+        text: inputValue,
+      }
+
+      setTodos([...todos, newTodo]);
+      setInputValue('');
+    }
+  }
 
   return (
     <div>
