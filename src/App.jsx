@@ -1,16 +1,19 @@
-import Header from "./Components/Header"
-import Body from "./Components/Body"
-import Footer from "./Components/Footer"
+import React from 'react'
+import { useState } from 'react'
 
-function App() {
+const App = () => {
+  const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [editMode, setEditMode] = useState(false);
+  const [editId, setEditId] = useState(null);
+  const [editValue, setEditValue] = useState('');
+
   
 
   return (
-    <>
-      <Header/>
-      <Body/>
-      <Footer/>
-    </>
+    <div>
+      
+    </div>
   )
 }
 
