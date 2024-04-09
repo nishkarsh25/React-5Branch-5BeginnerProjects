@@ -1,16 +1,12 @@
-import Header from "./Components/Header"
-import Body from "./Components/Body"
-import Footer from "./Components/Footer"
+import React, { useState } from "react";
+import coldBg from "./assets/cold-bg.jpg";
+import warmBg from "./assets/warm-bg.jpg";
 
-function App() {
-  
-
+const App = () => {
   return (
-    <>
-      <Header/>
-      <Body/>
-      <Footer/>
-    </>
+    <div>
+      
+    </div>
   )
 }
 
