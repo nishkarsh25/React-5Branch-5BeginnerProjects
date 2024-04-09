@@ -20,6 +20,13 @@ const App = () => {
     }
   }
 
+  const deleteTodo = (id) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  }
+
+  
+
   return (
     <div>
       
