@@ -9,6 +9,9 @@ const api = {
 };
 
 const App = () => {
+  const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState({});
+  
   return (
     <div>
       
