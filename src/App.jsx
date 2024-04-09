@@ -40,7 +40,7 @@ const App = () => {
             : coldBg})`,
       }}
     >
-      <div className={`${typeof weather.main !== "undefined" && weather.main.temp > 16 ? "bg-gradient-to-br from-red-400 to-orange-500" : "bg-gradient-to-br from-green-400 to-cyan-500"} p-8 rounded-lg shadow-lg`}>
+      <div className={`${typeof weather.main !== "undefined" && weather.main.temp > 16 ? "bg-gradient-to-br from-red-400 to-orange-200" : "bg-gradient-to-br from-green-100 to-cyan-200"} p-8 rounded-lg shadow-lg`}>
         <div className="search-box mb-4">
           <input
             type="text"
