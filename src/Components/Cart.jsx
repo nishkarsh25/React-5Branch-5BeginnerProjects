@@ -8,6 +8,17 @@ const Cart = ({ cart, setCart, handleChange }) => {
         const updatedCart = cart.filter((item) => item.id !== id);
         setCart(updatedCart);
     };
+
+    const handlePrice = () => {
+        let totalPrice = 0;
+        let items = 0;
+        cart.forEach((item) => {
+            totalPrice += item.amount * item.price;
+            items += item.amount;
+        });
+        setPrice(totalPrice);
+        setTotalItems(items);
+    };
     
     return (
         <div>
