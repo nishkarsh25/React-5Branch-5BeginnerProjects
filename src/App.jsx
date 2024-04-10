@@ -52,7 +52,16 @@ const App = () => {
 
   return (
     <div>
+      <NavBar size={cart.length} setShow={setShow}/>
+      {
+        show ? <Shop handleClick={handleClick} /> : <Cart cart={cart} setCart={setCart} handleChange={handleChange}/>
+      }
       
+      {
+        warning && <div className="bg-red-500 text-white px-6 py-3 rounded-md shadow-md absolute top-20 right-2 font-serif text-lg">
+
+        Item is already in your cart </div>
+      }
     </div>
   )
 }
