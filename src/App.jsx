@@ -2,83 +2,122 @@ import React from 'react'
 import { useState } from 'react'
 
 const App = () => {
-  const [input, setInput] = useState('');
+  const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [editMode, setEditMode] = useState(false);
+  const [editId, setEditId] = useState(null);
+  const [editValue, setEditValue] = useState('');
 
-  const calculateResult = (input) => {
-    try {
-      const result = eval(input);
-      setInput(result.toString());
-    } catch (error) {
-      setInput('Error');
+  const addTodo = () => {
+    if (inputValue.trim() !== '') {
+      const newTodo = {
+        id: new Date().getTime(),
+        text: inputValue,
+      }
+
+      setTodos([...todos, newTodo]);
+      setInputValue('');
     }
-  };
+  }
 
+  const deleteTodo = (id) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  }
 
-  const handleButtonClick = (value) => {
-    if (value === 'C') {
-      setInput('');
-    } else if (value === '<') {
-      setInput(input.slice(0, -1));
-    } else if (value === '=') {
-      calculateResult(input);
-    } else {
-      setInput((prevValue) => prevValue + value);
+  const enterEditMode = (id, text) => {
+    setEditMode(true);
+    setEditId(id);
+    setEditValue(text);
+  }
+
+  const updateTodo = () => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === editId) {
+        return { ...todo, text: editValue };
+      }
+      return todo;
+    });
+
+    setTodos(updatedTodos);
+    setEditMode(false);
+    setEditId(null);
+    setEditValue('');
+  }
+
+  const handleAddKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      addTodo();
     }
-  };
+  }
+
+  const handleUpdateKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      updateTodo();
+    }
+  }
 
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-green-400 to-blue-500">
-      <h1 className="text-5xl text-center mb-4 bg-gradient-to-r from-gray-800 via-pink-500 to-gray-800 text-transparent bg-clip-text font-bold">Calculator</h1>
-      <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h1 className="text-3xl text-center mb-4 text-white">{input}</h1>
-        <div className="grid grid-cols-4 gap-4">
-          {['C', '<', '%', '/'].map((value) => (
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-400 to-pink-500">
+      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+        <h2 className="text-3xl font-semibold mb-6 text-center">ToDo List</h2>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={handleAddKeyPress}
+          className="w-full mb-4 p-4 border-4 border-green-500 rounded-lg focus:outline-none focus:border-blue-500"
+          placeholder="Enter a new todo..."
+        />
+
+        {editMode ? (
+          <div className="mb-4">
+            <input
+              type="text"
+              value={editValue}
+              onChange={(e) => setEditValue(e.target.value)}
+              onKeyPress={handleUpdateKeyPress}
+              className="w-full p-4 border-4 border-pink-500 rounded-lg focus:outline-none focus:border-blue-500"
+              placeholder="Update ToDo..."
+            />
             <button
-              key={value}
-              onClick={() => handleButtonClick(value)}
-              className="py-3 px-6 rounded-lg bg-gray-600 text-white hover:bg-gray-700 focus:outline-none"
+              onClick={updateTodo}
+              className="w-full mt-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
             >
-              {value}
+              Update
             </button>
+          </div>
+        ) : (
+          <button
+            onClick={addTodo}
+            className="w-full px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:bg-green-600"
+          >
+            Add Todo
+          </button>
+        )}
+
+        <ul className="mt-8">
+          {todos.map((todo) => (
+            <li key={todo.id} className="flex justify-between items-center bg-gray-100 border-4 border-gray-500 p-4 mb-4 rounded-lg shadow-md">
+              <span className="text-lg">{todo.text}</span>
+              <div>
+                <button
+                  onClick={() => deleteTodo(todo.id)}
+                  className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none focus:bg-red-600"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => enterEditMode(todo.id, todo.text)}
+                  className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                >
+                  Edit
+                </button>
+              </div>
+            </li>
           ))}
-          {['7', '8', '9', '*'].map((value) => (
-            <button
-              key={value}
-              onClick={() => handleButtonClick(value)}
-              className="py-3 px-6 rounded-lg bg-gray-600 text-white hover:bg-gray-700 focus:outline-none"
-            >
-              {value}
-            </button>
-          ))}
-          {['4', '5', '6', '-'].map((value) => (
-            <button
-              key={value}
-              onClick={() => handleButtonClick(value)}
-              className="py-3 px-6 rounded-lg bg-gray-600 text-white hover:bg-gray-700 focus:outline-none"
-            >
-              {value}
-            </button>
-          ))}
-          {['1', '2', '3', '+'].map((value) => (
-            <button
-              key={value}
-              onClick={() => handleButtonClick(value)}
-              className="py-3 px-6 rounded-lg bg-gray-600 text-white hover:bg-gray-700 focus:outline-none"
-            >
-              {value}
-            </button>
-          ))}
-          {['0', '00', '.', '='].map((value) => (
-            <button
-              key={value}
-              onClick={() => handleButtonClick(value)}
-              className="py-3 px-6 rounded-lg bg-gray-600 text-white hover:bg-gray-700 focus:outline-none"
-            >
-              {value}
-            </button>
-          ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

@@ -1,22 +1,29 @@
-# Calculator App
+# ToDo App
 
-This project is a simple calculator application built using Vite and React. It allows users to perform basic arithmetic operations like addition, subtraction, multiplication, and division.
+This project is a simple ToDo list application built using Vite and React. It provides users with the ability to manage their tasks effectively by adding, deleting, and editing them.
 
 ## Live Demo
 
-You can try out the live demo of the app [here](https://luminous-selkie-c1f41a.netlify.app/).
+You can try out the live demo of the app [here](https://serene-pie-cb8532.netlify.app/).
 
 ## Features
 
-- **Basic Arithmetic Operations**: Perform addition, subtraction, multiplication, and division.
-- **Clear Input**: Clear the input field with the "C" button.
-- **Backspace**: Delete the last entered digit with the "<" button.
-- **Error Handling**: Properly handle errors such as invalid expressions.
+### Adding Tasks
+Users can easily add new tasks to their list by typing them into the input field and pressing Enter or clicking the "Add Todo" button.
+
+### Deleting Tasks
+Tasks that are no longer needed can be removed from the list by clicking the "Delete" button next to each task.
+
+### Editing Tasks
+Users have the option to edit existing tasks by clicking the "Edit" button next to a task. This allows them to modify the text of the task inline and update it accordingly.
+
+### Keyboard Navigation
+For improved usability, the app supports keyboard navigation. Users can press Enter to add or update a task, providing a seamless experience.
 
 ## Screenshots
 
 <!-- Include screenshots or GIFs of your app here to give users a visual representation of what your app looks like. -->
-<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/CalculatorProject/Screenshots/ss1.png" alt="Screenshot 1" width="1000"> 
+<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/ToDoListProject/Screenshots/ss1.png" alt="Screenshot 1" width="1000"> 
 
 ## Technologies Used
 
@@ -62,13 +69,6 @@ Before running the project, ensure you have the following installed:
    npm run dev
    ```
 2. **Open your browser** and navigate to http://localhost:3000 to view the app.
-
-## How to Use
-
-- Enter numbers and perform operations using the provided buttons.
-- Use the "C" button to clear the input.
-- Use the "<" button to delete the last digit.
-- Press "=" to calculate the result.
 
 
 ## React + Vite
