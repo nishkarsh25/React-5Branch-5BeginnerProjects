@@ -1,26 +1,25 @@
-# Weather App
+# BMI Calculator App
 
 ## Overview
 
-This Weather App is a simple yet effective tool for checking real-time weather conditions based on city names. Built with React and Vite, it provides users with an intuitive interface to search for weather information and view temperature, weather descriptions, humidity, and more.
+The BMI Calculator App is a simple yet powerful tool for calculating Body Mass Index (BMI) based on height and weight inputs. It provides users with an interactive interface to input their height and weight, and then displays their BMI along with BMI categories. This README provides detailed information about the project, including installation instructions and usage guidelines.
 
 ## Features
 
-- **Dynamic Background**: The background changes dynamically based on the temperature, providing a visual cue of the weather conditions.
-  
-- **Real-time Weather Data**: Users can search for weather information by entering city names. The application fetches real-time weather data from the OpenWeatherMap API and displays it to the user.
+- **Dynamic BMI Calculation**: The application calculates BMI in real-time as users adjust their height and weight using range sliders.
+
+- **BMI Categories**: It displays the BMI category based on the calculated BMI value, helping users understand whether they fall into the underweight, normal weight, overweight, or obese category.
 
 - **Responsive Design**: The application is designed to be responsive, ensuring optimal viewing experience across various devices and screen sizes.
 
 ## Live Demo
 
-You can try out the live demo of the app [here](https://astounding-sawine-15ecb6.netlify.app/).
+You can try out the live demo of the app [here](https://delicate-quokka-58543a.netlify.app/).
 
 ## Screenshots
 
 <!-- Include screenshots or GIFs of your app here to give users a visual representation of what your app looks like. -->
-<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/WeatherAppProject/Screenshots/ss1.png" alt="Screenshot 1" width="1000"> 
-<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/WeatherAppProject/Screenshots/ss2.png" alt="Screenshot 1" width="1000"> 
+<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/BmiCalculatorProject/Screenshots/ss1.png" alt="Screenshot 1" width="1000"> 
 
 ## Technologies Used
 
@@ -69,6 +68,16 @@ Before running the project, ensure you have the following installed:
    npm run dev
    ```
 2. **Open your browser** and navigate to http://localhost:3000 to view the app.
+
+
+## How to Use
+
+1. **Input Height and Weight**: Use the range sliders to input your height (in centimeters) and weight (in kilograms).
+
+2. **View BMI**: As you adjust the sliders, the BMI value will be calculated dynamically and displayed on the screen.
+
+3. **BMI Categories**: The application will also display the corresponding BMI category based on the calculated BMI value.
+
 
 
 ## React + Vite

@@ -1,84 +1,68 @@
-import React, { useState } from "react";
-import coldBg from "./assets/cold-bg.jpg";
-import warmBg from "./assets/warm-bg.jpg";
-
-
-const api = {
-  key: "a52e689a44c99bdb44350cf002da7b76",
-  base: "https://api.openweathermap.org/data/2.5/",
-};
+import React, { useMemo, useState } from "react";
 
 const App = () => {
-  const [query, setQuery] = useState("");
-  const [weather, setWeather] = useState({});
+  const [height, setHeight] = useState(180);
+  const [weight, setWeight] = useState(70);
 
-  const search = (evt) => {
-    if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
-        .then((res) => res.json())
-        .then((result) => {
-          setWeather(result);
-          setQuery("");
-          console.log(result);
-        });
-    }
-  };
+  function onWeightChange(event) {
+    setWeight(event.target.value);
+  }
 
-  const dateBuilder = (d) => {
-    const options = { weekday: "long", month: "long", day: "numeric" };
-    const date = d.toLocaleDateString("en-US", options);
-    return date;
-  };
+  function onHeightChange(event) {
+    setHeight(event.target.value);
+  }
+
+  const output = useMemo(() => {
+    const calculateHeight = height / 100;
+    return (weight / (calculateHeight * calculateHeight)).toFixed(1);
+  }, [weight, height]);
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url(${typeof weather.main !== "undefined" &&
-          weather.main.temp > 16
-            ? warmBg
-            : coldBg})`,
-      }}
-    >
-      <div className={`${typeof weather.main !== "undefined" && weather.main.temp > 16 ? "bg-gradient-to-br from-red-400 to-white-300" : "bg-gradient-to-br from-cyan-200 to-white-300"} p-8 rounded-lg shadow-lg`}>
-        <div className="search-box mb-4">
-          <input
-            type="text"
-            className="w-full py-2 px-4 rounded-lg bg-gray-100 focus:outline-none focus:ring focus:ring-blue-400"
-            placeholder="Search..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={search}
-          />
-        </div>
-
-        {typeof weather.main !== "undefined" && (
-          <div className="text-center">
-            <div className="text-3xl font-semibold text-gray-800 mb-2">
-              {weather.name}, {weather.sys.country}
-            </div>
-            <div className="text-lg text-gray-600 italic mb-4">
-              {dateBuilder(new Date())}
-            </div>
-            <div className={`${typeof weather.main !== "undefined" && weather.main.temp > 16 ? "bg-gradient-to-br from-red-400 to-blue-500" : "bg-gradient-to-br from-pink-400 to-cyan-500"} p-6 rounded-lg shadow-md mb-4`}>
-              <div className="text-6xl font-bold text-white mb-2">
-                {Math.round(weather.main.temp)}°C
-              </div>
-              <div className="text-2xl font-semibold text-white mb-2">
-                {weather.weather[0].main}
-              </div>
-              <div className="flex justify-between text-lg text-white">
-                <div>
-                  Feels like: {Math.round(weather.main.feels_like)}°C
-                </div>
-                <div>Humidity: {Math.round(weather.main.humidity)}%</div>
-              </div>
-            </div>
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-96">
+        <h1 className="text-3xl font-bold text-gray-900 mb-4">BMI Calculator</h1>
+        <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-2">
+            <p className="text-lg font-bold text-gray-900">Weight: {weight} kg</p>
+            <input
+              className="w-full appearance-none rounded-lg h-2 bg-gradient-to-r from-pink-400 to-purple-400"
+              type="range"
+              step="1"
+              min="40"
+              max="200"
+              value={weight}
+              onChange={onWeightChange}
+            />
           </div>
-        )}
+          <div className="flex flex-col space-y-2">
+            <p className="text-lg font-bold text-gray-900">Height: {height} cm</p>
+            <input
+              className="w-full appearance-none rounded-lg h-2 bg-gradient-to-r from-pink-400 to-purple-400"
+              type="range"
+              step="1"
+              min="140"
+              max="220"
+              value={height}
+              onChange={onHeightChange}
+            />
+          </div>
+        </div>
+        <div className="mt-8">
+          <p className="text-lg font-bold text-gray-900">Your BMI is</p>
+          <p className="text-4xl font-bold text-gray-900">{output}</p>
+          <div className="mt-4 p-4 bg-gradient-to-r from-pink-400 to-purple-400 rounded-lg">
+            <p className="text-lg font-bold text-gray-900 mb-2">BMI Categories:</p>
+            <ul className="list-disc list-inside text-gray-800">
+              <li>Underweight: &lt; 18.5</li>
+              <li>Normal weight: 18.5 - 24.9</li>
+              <li>Overweight: 25 - 29.9</li>
+              <li>Obesity: &gt;= 30</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
   );
-}
+};
 
-export default App
+export default App;
