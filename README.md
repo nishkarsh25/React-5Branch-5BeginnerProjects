@@ -70,13 +70,6 @@ Before running the project, ensure you have the following installed:
    ```
 2. **Open your browser** and navigate to http://localhost:3000 to view the app.
 
-## How to Use
-
-- Enter numbers and perform operations using the provided buttons.
-- Use the "C" button to clear the input.
-- Use the "<" button to delete the last digit.
-- Press "=" to calculate the result.
-
 
 ## React + Vite
 
