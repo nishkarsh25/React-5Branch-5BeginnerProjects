@@ -4,7 +4,7 @@ This project is a simple calculator application built using Vite and React. It a
 
 ## Live Demo
 
-You can try out the live demo of the calculator app [here](https://luminous-selkie-c1f41a.netlify.app/).
+You can try out the live demo of the app [here](https://luminous-selkie-c1f41a.netlify.app/).
 
 ## Features
 
