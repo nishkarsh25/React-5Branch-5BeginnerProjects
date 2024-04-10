@@ -86,7 +86,7 @@ Contributions to this project are highly appreciated! Whether you discover bugs,
 
 - **Report Issues:** If you encounter any bugs or issues while using MyCalculatorApp, please open an issue on the GitHub repository. Be sure to provide detailed information about the problem and steps to reproduce it.
 
-- **Submit Pull Requests:** If you have enhancements or fixes to propose, feel free to submit a pull request. Contributions that improve the functionality, usability, or performance of MyCalculatorApp are welcomed and encouraged.
+- **Submit Pull Requests:** If you have enhancements or fixes to propose, feel free to submit a pull request. Contributions that improve the functionality, usability, or performance of this app are welcomed and encouraged.
 
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
