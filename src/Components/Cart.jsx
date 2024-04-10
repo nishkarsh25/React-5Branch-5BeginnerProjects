@@ -51,7 +51,16 @@ const Cart = ({ cart, setCart, handleChange }) => {
                     </div>
                 </div>
             ))}
-            
+            <div className="flex items-center justify-between mt-4">
+                <div>
+                    <span className="text-xl font-semibold text-gray-800">Total Price of your Cart:</span>
+                    <span className="text-xl font-bold text-gray-800">Rs - {price}</span>
+                </div>
+                <div>
+                    <span className="text-xl font-semibold text-gray-800">Total Items:</span>
+                    <span className="text-xl font-bold text-gray-800">{totalItems}</span>
+                </div>
+            </div>
         </article>
     );
 }
