@@ -1,35 +1,35 @@
-# ToDo App
+# Weather App
 
-This project is a simple ToDo list application built using Vite and React. It provides users with the ability to manage their tasks effectively by adding, deleting, and editing them.
+## Overview
 
-## Live Demo
-
-You can try out the live demo of the app [here](https://serene-pie-cb8532.netlify.app/).
+This Weather App is a simple yet effective tool for checking real-time weather conditions based on city names. Built with React and Vite, it provides users with an intuitive interface to search for weather information and view temperature, weather descriptions, humidity, and more.
 
 ## Features
 
-### Adding Tasks
-Users can easily add new tasks to their list by typing them into the input field and pressing Enter or clicking the "Add Todo" button.
+- **Dynamic Background**: The background changes dynamically based on the temperature, providing a visual cue of the weather conditions.
+  
+- **Real-time Weather Data**: Users can search for weather information by entering city names. The application fetches real-time weather data from the OpenWeatherMap API and displays it to the user.
 
-### Deleting Tasks
-Tasks that are no longer needed can be removed from the list by clicking the "Delete" button next to each task.
+- **Responsive Design**: The application is designed to be responsive, ensuring optimal viewing experience across various devices and screen sizes.
 
-### Editing Tasks
-Users have the option to edit existing tasks by clicking the "Edit" button next to a task. This allows them to modify the text of the task inline and update it accordingly.
+## Live Demo
 
-### Keyboard Navigation
-For improved usability, the app supports keyboard navigation. Users can press Enter to add or update a task, providing a seamless experience.
+You can try out the live demo of the app [here](https://astounding-sawine-15ecb6.netlify.app/).
 
 ## Screenshots
 
 <!-- Include screenshots or GIFs of your app here to give users a visual representation of what your app looks like. -->
-<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/ToDoListProject/Screenshots/ss1.png" alt="Screenshot 1" width="1000"> 
+<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/WeatherAppProject/Screenshots/ss1.png" alt="Screenshot 1" width="1000"> 
+<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/WeatherAppProject/Screenshots/ss2.png" alt="Screenshot 1" width="1000"> 
 
 ## Technologies Used
 
-- **React**: A JavaScript library for building user interfaces.
-- **Vite**: A next-generation frontend build tool that offers lightning-fast cold server start and instant hot module replacement (HMR).
-- **Tailwind CSS**: A utility-first CSS framework for rapidly building custom designs.
+- **React**: A popular JavaScript library for building user interfaces. React provides a component-based architecture that makes it easy to develop interactive UI components.
+
+- **Vite**: A next-generation frontend tooling. Vite offers fast development server, hot module replacement, and optimized production builds, enabling rapid development of modern web applications.
+
+- **CSS (Tailwind CSS)**: Tailwind CSS is used for styling the application. It provides a utility-first approach to CSS, allowing developers to quickly build custom designs by applying pre-defined utility classes.
+  
 
 ## Getting Started
 
@@ -114,7 +114,13 @@ This project is made possible by the contributions and support of various indivi
 
 This project wouldn't be possible without the contributions of the following:
 
-- **Tailwind CSS**: Tailwind CSS empowers developers to build custom designs rapidly, enabling the creation of a visually appealing and cohesive user interface. Visit [Tailwind CSS](https://tailwindcss.com/) for more information.
+- **React**: A JavaScript library for building user interfaces. Visit [React](https://reactjs.org/) for more information.
+
+- **Vite**: A next-generation frontend tooling. Visit [Vite](https://vitejs.dev/) for more information.
+
+- **Tailwind CSS**: A utility-first CSS framework for creating custom designs rapidly. Visit [Tailwind CSS](https://tailwindcss.com/) for more information.
+
+- **OpenWeatherMap API**: Provides real-time weather data for cities around the world. Visit [OpenWeatherMap](https://openweathermap.org/) for more information.
 
 - **Netlify**: Netlify provides seamless deployment and hosting solutions, making it easy to deploy web applications and share them with the world. Visit [Netlify](https://www.netlify.com/) for more information.
 

@@ -1,123 +1,81 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from "react";
+import coldBg from "./assets/cold-bg.jpg";
+import warmBg from "./assets/warm-bg.jpg";
+
+
+const api = {
+  key: "a52e689a44c99bdb44350cf002da7b76",
+  base: "https://api.openweathermap.org/data/2.5/",
+};
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-  const [editMode, setEditMode] = useState(false);
-  const [editId, setEditId] = useState(null);
-  const [editValue, setEditValue] = useState('');
+  const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState({});
 
-  const addTodo = () => {
-    if (inputValue.trim() !== '') {
-      const newTodo = {
-        id: new Date().getTime(),
-        text: inputValue,
-      }
-
-      setTodos([...todos, newTodo]);
-      setInputValue('');
+  const search = (evt) => {
+    if (evt.key === "Enter") {
+      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+        .then((res) => res.json())
+        .then((result) => {
+          setWeather(result);
+          setQuery("");
+          console.log(result);
+        });
     }
-  }
+  };
 
-  const deleteTodo = (id) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
-  }
-
-  const enterEditMode = (id, text) => {
-    setEditMode(true);
-    setEditId(id);
-    setEditValue(text);
-  }
-
-  const updateTodo = () => {
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === editId) {
-        return { ...todo, text: editValue };
-      }
-      return todo;
-    });
-
-    setTodos(updatedTodos);
-    setEditMode(false);
-    setEditId(null);
-    setEditValue('');
-  }
-
-  const handleAddKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      addTodo();
-    }
-  }
-
-  const handleUpdateKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      updateTodo();
-    }
-  }
-
+  const dateBuilder = (d) => {
+    const options = { weekday: "long", month: "long", day: "numeric" };
+    const date = d.toLocaleDateString("en-US", options);
+    return date;
+  };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-400 to-pink-500">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-3xl font-semibold mb-6 text-center">ToDo List</h2>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyPress={handleAddKeyPress}
-          className="w-full mb-4 p-4 border-4 border-green-500 rounded-lg focus:outline-none focus:border-blue-500"
-          placeholder="Enter a new todo..."
-        />
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${typeof weather.main !== "undefined" &&
+          weather.main.temp > 16
+            ? warmBg
+            : coldBg})`,
+      }}
+    >
+      <div className={`${typeof weather.main !== "undefined" && weather.main.temp > 16 ? "bg-gradient-to-br from-red-400 to-white-300" : "bg-gradient-to-br from-cyan-200 to-white-300"} p-8 rounded-lg shadow-lg`}>
+        <div className="search-box mb-4">
+          <input
+            type="text"
+            className="w-full py-2 px-4 rounded-lg bg-gray-100 focus:outline-none focus:ring focus:ring-blue-400"
+            placeholder="Search..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyPress={search}
+          />
+        </div>
 
-        {editMode ? (
-          <div className="mb-4">
-            <input
-              type="text"
-              value={editValue}
-              onChange={(e) => setEditValue(e.target.value)}
-              onKeyPress={handleUpdateKeyPress}
-              className="w-full p-4 border-4 border-pink-500 rounded-lg focus:outline-none focus:border-blue-500"
-              placeholder="Update ToDo..."
-            />
-            <button
-              onClick={updateTodo}
-              className="w-full mt-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-            >
-              Update
-            </button>
-          </div>
-        ) : (
-          <button
-            onClick={addTodo}
-            className="w-full px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 focus:outline-none focus:bg-green-600"
-          >
-            Add Todo
-          </button>
-        )}
-
-        <ul className="mt-8">
-          {todos.map((todo) => (
-            <li key={todo.id} className="flex justify-between items-center bg-gray-100 border-4 border-gray-500 p-4 mb-4 rounded-lg shadow-md">
-              <span className="text-lg">{todo.text}</span>
-              <div>
-                <button
-                  onClick={() => deleteTodo(todo.id)}
-                  className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none focus:bg-red-600"
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={() => enterEditMode(todo.id, todo.text)}
-                  className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-                >
-                  Edit
-                </button>
+        {typeof weather.main !== "undefined" && (
+          <div className="text-center">
+            <div className="text-3xl font-semibold text-gray-800 mb-2">
+              {weather.name}, {weather.sys.country}
+            </div>
+            <div className="text-lg text-gray-600 italic mb-4">
+              {dateBuilder(new Date())}
+            </div>
+            <div className={`${typeof weather.main !== "undefined" && weather.main.temp > 16 ? "bg-gradient-to-br from-red-400 to-blue-500" : "bg-gradient-to-br from-pink-400 to-cyan-500"} p-6 rounded-lg shadow-md mb-4`}>
+              <div className="text-6xl font-bold text-white mb-2">
+                {Math.round(weather.main.temp)}°C
               </div>
-            </li>
-          ))}
-        </ul>
+              <div className="text-2xl font-semibold text-white mb-2">
+                {weather.weather[0].main}
+              </div>
+              <div className="flex justify-between text-lg text-white">
+                <div>
+                  Feels like: {Math.round(weather.main.feels_like)}°C
+                </div>
+                <div>Humidity: {Math.round(weather.main.humidity)}%</div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
