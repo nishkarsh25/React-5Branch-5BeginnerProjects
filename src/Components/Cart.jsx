@@ -19,7 +19,11 @@ const Cart = ({ cart, setCart, handleChange }) => {
         setPrice(totalPrice);
         setTotalItems(items);
     };
-    
+
+    useEffect(() => {
+        handlePrice();
+    }, [cart]);
+
     return (
         <div>
         
