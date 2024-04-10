@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 
 const Cart = ({ cart, setCart, handleChange }) => {
     const [price, setPrice] = useState(0);
@@ -63,6 +63,6 @@ const Cart = ({ cart, setCart, handleChange }) => {
             </div>
         </article>
     );
-}
+};
 
-export default Cart
+export default Cart;
