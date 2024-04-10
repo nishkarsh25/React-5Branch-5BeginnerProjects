@@ -5,6 +5,11 @@ import Cart from './Components/Cart';
 
 
 const App = () => {
+
+  const [cart,setCart] = useState([]);
+  const [warning,setWarning] = useState(false);
+  const[show,setShow] = useState(true);
+  
   return (
     <div>
       
