@@ -1,34 +1,75 @@
-# BMI Calculator App
+# AddToCart App
 
 ## Overview
 
-The BMI Calculator App is a simple yet powerful tool for calculating Body Mass Index (BMI) based on height and weight inputs. It provides users with an interactive interface to input their height and weight, and then displays their BMI along with BMI categories. This README provides detailed information about the project, including installation instructions and usage guidelines.
-
-## Features
-
-- **Dynamic BMI Calculation**: The application calculates BMI in real-time as users adjust their height and weight using range sliders.
-
-- **BMI Categories**: It displays the BMI category based on the calculated BMI value, helping users understand whether they fall into the underweight, normal weight, overweight, or obese category.
-
-- **Responsive Design**: The application is designed to be responsive, ensuring optimal viewing experience across various devices and screen sizes.
+The AddToCart App is a simple e-commerce application built with React. It allows users to browse through a list of products, add items to their cart, and view their cart with a summary of the total price and quantity of items. The application consists of three main components: Navbar, Shop, and Cart.
 
 ## Live Demo
 
-You can try out the live demo of the app [here](https://delicate-quokka-58543a.netlify.app/).
+You can try out the live demo of the app [here](https://jazzy-maamoul-3d99d4.netlify.app/).
+
+## Folder Structure
+
+```
+AddToCart-app/
+│
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+│
+├── src/
+│   ├── Components/
+│   │   ├── Card.jsx
+│   │   ├── Cart.jsx
+│   │   ├── NavBar.jsx
+│   │   └── Shop.jsx
+│   │
+│   ├── assets/
+│   │   ├── images/
+│   │   │   ├── product1.jpg
+│   │   │   ├── product2.jpg
+│   │   │   └── ...
+│   │   └── ...
+│   │
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── index.js
+│
+├── node_modules/
+│
+├── package.json
+├── package-lock.json
+├── README.md
+└── .gitignore
+
+```
+
+## Components
+
+### Navbar
+The Navbar component displays the application title and the current number of items in the cart. It also provides navigation options to switch between the Shop and Cart views.
+
+### Shop
+The Shop component is responsible for rendering a list of products available for purchase. Each product is displayed as a Card component, which includes the product's image, title, author, price, and an "Add to Cart" button. Users can click on the button to add the item to their cart.
+
+### Cart
+The Cart component displays the items that the user has added to their cart. It provides options to remove items from the cart, adjust the quantity of items, and view the total price of the cart.
+
 
 ## Screenshots
 
 <!-- Include screenshots or GIFs of your app here to give users a visual representation of what your app looks like. -->
-<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/BmiCalculatorProject/Screenshots/ss1.png" alt="Screenshot 1" width="1000"> 
+<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/AddToCartProject/Screenshots/ss1.png" alt="Screenshot 1" width="1000"> 
+<img src="https://github.com/nishkarsh25/React-5Branch-5BeginnerProjects/blob/AddToCartProject/Screenshots/ss2.png" alt="Screenshot 1" width="1000"> 
 
 ## Technologies Used
 
-- **React**: A popular JavaScript library for building user interfaces. React provides a component-based architecture that makes it easy to develop interactive UI components.
-
-- **Vite**: A next-generation frontend tooling. Vite offers fast development server, hot module replacement, and optimized production builds, enabling rapid development of modern web applications.
-
-- **CSS (Tailwind CSS)**: Tailwind CSS is used for styling the application. It provides a utility-first approach to CSS, allowing developers to quickly build custom designs by applying pre-defined utility classes.
-  
+- **React**: A JavaScript library for building user interfaces.
+- **useState Hook**: React hook for managing state in functional components.
+- **Components**: Modular building blocks used to compose the UI, including Navbar, Shop, Cart, and Card components.
+- **CSS**: Styling is done using Tailwind CSS, providing a utility-first approach to CSS.
+- **FontAwesome**: FontAwesome icons are used for visual elements such as the shopping cart icon.
 
 ## Getting Started
 
@@ -69,15 +110,15 @@ Before running the project, ensure you have the following installed:
    ```
 2. **Open your browser** and navigate to http://localhost:3000 to view the app.
 
-
 ## How to Use
 
-1. **Input Height and Weight**: Use the range sliders to input your height (in centimeters) and weight (in kilograms).
+1. **Browsing Products**: Upon opening the application, you will be directed to the Shop view where you can browse through the list of products available for purchase.
 
-2. **View BMI**: As you adjust the sliders, the BMI value will be calculated dynamically and displayed on the screen.
+2. **Adding Items to Cart**: To add an item to your cart, click on the "Add to Cart" button displayed on the product card. The item will be added to your cart.
 
-3. **BMI Categories**: The application will also display the corresponding BMI category based on the calculated BMI value.
+3. **Viewing Cart**: You can view the items you've added to your cart by clicking on the shopping cart icon in the Navbar. This will take you to the Cart view.
 
+4. **Managing Cart**: In the Cart view, you can adjust the quantity of items or remove items from your cart as needed. Changes to the cart will be reflected in the total price and quantity displayed.
 
 
 ## React + Vite
@@ -124,12 +165,10 @@ This project is made possible by the contributions and support of various indivi
 This project wouldn't be possible without the contributions of the following:
 
 - **React**: A JavaScript library for building user interfaces. Visit [React](https://reactjs.org/) for more information.
-
-- **Vite**: A next-generation frontend tooling. Visit [Vite](https://vitejs.dev/) for more information.
-
+  
 - **Tailwind CSS**: A utility-first CSS framework for creating custom designs rapidly. Visit [Tailwind CSS](https://tailwindcss.com/) for more information.
 
-- **OpenWeatherMap API**: Provides real-time weather data for cities around the world. Visit [OpenWeatherMap](https://openweathermap.org/) for more information.
+- **FontAwesome**: A popular icon library providing a vast collection of icons for web development. Visit [FontAwesome](https://fontawesome.com/) for more information.
 
 - **Netlify**: Netlify provides seamless deployment and hosting solutions, making it easy to deploy web applications and share them with the world. Visit [Netlify](https://www.netlify.com/) for more information.
 

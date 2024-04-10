@@ -1,68 +1,69 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from 'react'
+import NavBar from './Components/NavBar';
+import Shop from './Components/Shop'
+import Cart from './Components/Cart';
+
 
 const App = () => {
-  const [height, setHeight] = useState(180);
-  const [weight, setWeight] = useState(70);
 
-  function onWeightChange(event) {
-    setWeight(event.target.value);
+  const [cart,setCart] = useState([]);
+  const [warning,setWarning] = useState(false);
+  const[show,setShow] = useState(true);
+
+
+  const handleClick=(item) =>{
+    let isPresent = false;
+    cart.forEach((product) =>{
+      if(item.id === product.id)
+      isPresent= true;
+    })
+
+    if(isPresent){
+      setWarning(true);
+      setTimeout(()=>{
+        setWarning(false);
+      },2000);
+      return;
+    }
+    setCart([...cart,item]);
   }
 
-  function onHeightChange(event) {
-    setHeight(event.target.value);
-  }
+  const handleChange = (item,d) => {
+    let ind = -1;
+    cart.forEach((data,index) => {
+      if(data.id === item.id)
+      ind = index;
+    });
+    const tempArr = cart;
+    tempArr[ind].amount +=d;
+    console.log(tempArr);
 
-  const output = useMemo(() => {
-    const calculateHeight = height / 100;
-    return (weight / (calculateHeight * calculateHeight)).toFixed(1);
-  }, [weight, height]);
+    if(tempArr[ind].amount === 0){
+      tempArr[ind].amount =1;
+      const updatedCart = cart.filter((item) => item.id !== tempArr[ind].id);
+      setCart(updatedCart);
+    }
+    else
+    {
+      setCart([...tempArr])
+    }
+    
+  }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-96">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">BMI Calculator</h1>
-        <div className="flex flex-col space-y-4">
-          <div className="flex flex-col space-y-2">
-            <p className="text-lg font-bold text-gray-900">Weight: {weight} kg</p>
-            <input
-              className="w-full appearance-none rounded-lg h-2 bg-gradient-to-r from-pink-400 to-purple-400"
-              type="range"
-              step="1"
-              min="40"
-              max="200"
-              value={weight}
-              onChange={onWeightChange}
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <p className="text-lg font-bold text-gray-900">Height: {height} cm</p>
-            <input
-              className="w-full appearance-none rounded-lg h-2 bg-gradient-to-r from-pink-400 to-purple-400"
-              type="range"
-              step="1"
-              min="140"
-              max="220"
-              value={height}
-              onChange={onHeightChange}
-            />
-          </div>
-        </div>
-        <div className="mt-8">
-          <p className="text-lg font-bold text-gray-900">Your BMI is</p>
-          <p className="text-4xl font-bold text-gray-900">{output}</p>
-          <div className="mt-4 p-4 bg-gradient-to-r from-pink-400 to-purple-400 rounded-lg">
-            <p className="text-lg font-bold text-gray-900 mb-2">BMI Categories:</p>
-            <ul className="list-disc list-inside text-gray-800">
-              <li>Underweight: &lt; 18.5</li>
-              <li>Normal weight: 18.5 - 24.9</li>
-              <li>Overweight: 25 - 29.9</li>
-              <li>Obesity: &gt;= 30</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
-};
+    <div>
+      <NavBar size={cart.length} setShow={setShow}/>
+      {
+        show ? <Shop handleClick={handleClick} /> : <Cart cart={cart} setCart={setCart} handleChange={handleChange}/>
+      }
+      
+      {
+        warning && <div className="bg-red-500 text-white px-6 py-3 rounded-md shadow-md absolute top-20 right-2 font-serif text-lg">
+
+        Item is already in your cart </div>
+      }
+    </div>
+  )
+}
 
 export default App;
