@@ -6,7 +6,7 @@ The AddToCart App is a simple e-commerce application built with React. It allows
 
 ## Live Demo
 
-You can try out the live demo of the app [here](https://jazzy-maamoul-3d99d4.netlify.app/).
+You can try out the live demo of the app [here](https://react-5branch-5beginnerprojects.onrender.com/).
 
 ## Folder Structure
 
