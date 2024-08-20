@@ -14,7 +14,7 @@ The BMI Calculator App is a simple yet powerful tool for calculating Body Mass I
 
 ## Live Demo
 
-You can try out the live demo of the app [here](https://delicate-quokka-58543a.netlify.app/).
+You can try out the live demo of the app [here](https://react-5branch-5beginnerprojects-1.onrender.com).
 
 ## Screenshots
 
