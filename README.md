@@ -14,7 +14,7 @@ This Weather App is a simple yet effective tool for checking real-time weather c
 
 ## Live Demo
 
-You can try out the live demo of the app [here](https://astounding-sawine-15ecb6.netlify.app/).
+You can try out the live demo of the app [here](https://react-5branch-5beginnerprojects-2.onrender.com/).
 
 ## Screenshots
 
